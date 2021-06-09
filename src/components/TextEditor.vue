@@ -1,11 +1,7 @@
 <script>
 import Mention from './mention'
 
-const backgroundImage = (item) => {
-  return item.original.imageFolder !== 'digitasticProfil'
-    ? `background-image: url(https://imageupdate.digitastic.app/profilImage/${item.original.imageFolder}/150x40.png)`
-    : 'background-color: #4a90e2'
-}
+
 
 const placeholder = (item) => {
   const firstName = item.original.username.charAt(0)
@@ -14,7 +10,7 @@ const placeholder = (item) => {
       ? item.original.username.charAt(2)
       : item.original.username.charAt(1)
   const nameAvt = firstName + lastName
-  return item.original.imageFolder === 'digitasticProfil'
+  return item.original.imageFolder === ''
     ? `${nameAvt.trim()}`
     : ''
 }
@@ -85,7 +81,7 @@ export default {
         },
         menuItemTemplate: function(item) {
           return (
-            `<span role="img" style="${backgroundImage(
+            `<span role="img" style="${(
               item
             )}" class="w-6 h-6 mr-2 font-thin border border-gray-900 bg-no-repeat bg-cover text-xs uppercase flex items-center justify-center text-white rounded-full relative cursor-pointer">${placeholder(
               item
